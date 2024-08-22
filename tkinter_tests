@@ -1,0 +1,44 @@
+import random
+import tkinter as tk
+from tkinter import simpledialog, messagebox
+
+winningCombinations = {
+        "rock": "knives",
+        "paper": "rock",
+        "knives": "paper"
+}
+
+# putting the 3 options into a set
+mySet = {"rock", "paper", "knives"}
+
+# taking the set and running it through the list() function to index the options
+myList = list(mySet)
+
+#calls a random indexed entry from myList which will correpsond to one of the 3 options, which is possible because the options had an index added previously
+randomWord = random.choice(myList)
+
+
+# create functions called add_message and add_message2 that outputs text into the tkinter window. in this instance it's being called by the buttons by 'command' option
+
+def add_message():
+    text_output.insert(tk.END, "Another line of output!\n")
+
+def add_message2():
+    text_output.insert(tk.END, "stand\n")
+
+###creates the instance for the frame and the name
+root = tk.Tk()
+root.title("test window")
+
+text_output = tk.Text(root, height=10, width=40)
+text_output.pack(pady=20)
+
+#creates button on top called hit
+hit_button = tk.Button(root, text="Hit", command=add_message)
+hit_button.pack(pady=10)
+
+stand_button = tk.Button(root, text="Stand", command=add_message2)
+stand_button.pack(pady=10, padx=10)
+
+#opens the window
+root.mainloop()
